@@ -17,4 +17,6 @@ RUN curl -fsSL -o alloy.zip https://github.com/grafana/alloy/releases/download/$
 COPY run.sh /run.sh
 COPY config.alloy /etc/alloy/config.alloy
 
+RUN chmod +x /run.sh
+
 CMD [ "/run.sh" ]
