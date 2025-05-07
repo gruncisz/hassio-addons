@@ -4,7 +4,9 @@ FROM ${BUILD_FROM}
 RUN apk add --no-cache curl unzip bash
 
 ENV ALLOY_VERSION=v1.8.3
-ENV ARCH=arm64
+
+ARG BUILD_ARCH
+ENV ARCH=${BUILD_ARCH}
 
 WORKDIR /app
 

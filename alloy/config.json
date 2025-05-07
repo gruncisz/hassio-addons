@@ -15,6 +15,10 @@
     "tenant_id": "str",
     "api_key": "str"
   },
+  "build_arch": {
+    "aarch64": "arm64",
+    "armv7": "armv7"
+  },
   "arch": ["aarch64", "armv7"],
   "build_from": {
     "aarch64": "ghcr.io/home-assistant/aarch64-base:3.18",
