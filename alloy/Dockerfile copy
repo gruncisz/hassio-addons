@@ -1,8 +1,8 @@
-FROM debian:bullseye-slim
+ARG BUILD_FROM
+FROM ${BUILD_FROM}
 
-RUN apt-get update && \
-    apt-get install -y curl unzip ca-certificates && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl unzip bash libc6-compat
+
 
 ENV ALLOY_VERSION=v1.8.3
 ENV ARCH=arm64
@@ -17,6 +17,7 @@ RUN curl -fsSL -o alloy.zip https://github.com/grafana/alloy/releases/download/$
 
 COPY run.sh /run.sh
 COPY config.alloy /etc/alloy/config.alloy
+
 RUN chmod +x /run.sh
 
-CMD ["/run.sh"]
+CMD [ "/run.sh" ]
