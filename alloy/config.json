@@ -16,12 +16,10 @@
     "api_key": "str"
   },
   "build_arch": {
-    "aarch64": "arm64",
-    "armv7": "armv7"
+    "aarch64": "arm64"
   },
-  "arch": ["aarch64", "armv7"],
+  "arch": ["aarch64"],
   "build_from": {
-    "aarch64": "ghcr.io/home-assistant/aarch64-base:3.18",
-    "armv7": "ghcr.io/home-assistant/armv7-base:3.18"
+    "aarch64": "ghcr.io/home-assistant/aarch64-base:3.18"
   }
 }
