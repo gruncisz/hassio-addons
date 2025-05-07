@@ -1,7 +1,8 @@
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
-RUN apk add --no-cache curl unzip bash
+RUN apk add --no-cache curl unzip bash libc6-compat
+
 
 ENV ALLOY_VERSION=v1.8.3
 ENV ARCH=arm64
