@@ -1,0 +1,29 @@
+server {
+  log_level = "info"
+  http_listen_address = "0.0.0.0"
+  http_listen_port = 12345
+}
+
+loki.write "grafana_cloud" {
+  endpoint = "https://logs-prod3.grafana.net/loki/api/v1/push"
+  tenant_id = "__TENANT_ID__"
+  basic_auth {
+    username = "__TENANT_ID__"
+    password = "__API_KEY__"
+  }
+}
+
+discovery.files "ha_log" {
+  targets = [
+    {
+      __path__ = "/config/home-assistant.log"
+      job      = "home_assistant"
+      host     = "ha"
+    }
+  ]
+}
+
+loki.source.file "ha_logs" {
+  targets    = discovery.files.ha_log.targets
+  forward_to = [loki.write.grafana_cloud]
+}
